@@ -1,91 +1,89 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{siunitx}
+
+\setlength{\parskip}{1em}
 
 \begin{document}
-	\begin{center}
-    
-    	% MAKE SURE YOU TAKE OUT THE SQUARE BRACKETS
-    
+    \begin{center}
+        
 		\LARGE{\textbf{Proposal Tugas Akhir}} \\
         \vspace{1em}
         \Large{\textit{PM for PM2.5}: Analisis pada Dataset \textit{Air Quality}} \\
         \vspace{1em}
         \normalsize\textbf{Andrew Savero Ongko, Muhammad Fakhrillah Abdul Azis,} \\
         \normalsize\textbf{Muhammad Yudistira Hanifmuti} \\
-        \normalsize{\{andrew.savero, muhammad.fakhrillah, } \\
-        \normalsize{muhammad.yudistira\}@ui.ac.id} \\
+        \normalsize{\{andrew.savero, muhammad.fakhrillah, muhammad.yudistira\}@ui.ac.id} \\
         \vspace{1em}
         \normalsize{Universitas Indonesia, Depok} \\
         \normalsize{Fakultas Ilmu Komputer}
-     
+
 	\end{center}
     \begin{normalsize}
-    
-        \section{Catatan:}
-        
-        Delivery Tahap 1 - Proposal dan Exploratory Data Analysis
-        Proposal dikumpulkan dalam format PDF pada tanggal 23 November 2019 pukul 20.00
-        dengan memuat informasi sebagai berikut.
-        a. Penjelasan singkat terkait masalah yang ingin Anda pecahkan dari dataset yang
-        digunakan, termasuk mengenai analisis metode Data Mining (Clustering,
-        Regression, atau classification) yang paling tepat untuk data tersebut.
-        b. Penjelasan terkait hasil Exploratory Data Analysis yang Anda lakukan.
-        c. Desain cara kerja dan tahapan-tahapan dalam mengelola data.
-        d. Metode yang akan digunakan, termasuk alasan pemilihan metode tersebut dan
-        state of the art dari metode tersebut
         
         \section{Identifikasi Masalah}
+        Proposal ini dimulai dengan identifikasi dari masalah yang ingin diselesaikan. 
+        Pada kesempatan ini, kelompok kami mendapatkan dataset \textit{Air Quality} 
+        untuk pengerjaan Tugas Akhir Mata Kuliah Penambangan Data. Dataset tersebut memiliki 
+        sebuah atribut target bernama "PM 2.5" dan beberapa atribut lain yang merupakan hasil 
+        pengawasan kualitas udara oleh beberapa stasiun pengawasan di suatu negara. Atribut 
+        PM2.5 merujuk pada istilah \textit{"Atmospheric Particulate Matter"} yang memiliki
+        diameter $<$ \SI{2.5}{\micro\metre}. Ukurannya yang kecil membuat partikel ini dapat 
+        masuk jauh ke dalam sistem pernafasan dan peredaran darah yang dapat menyebabkan 
+        serangan jantung, penyakit pernafasan, hingga kematian. Sehingga konsentrasi PM2.5
+        ini cukup penting untuk dimonitor dan diproses lebih lanjut. Hal ini dapat membantu 
+        mengetahui tempat dan waktu krusial yang memiliki tingkat PM2.5 tinggi agar bisa
+        dilakukan usaha pencegahan untuk menghindari hal-hal yang tidak diinginkan.
+
+        \noindent Seperti yang disinggung pada paragraf sebelumnya, dataset \textit{Air Quality}
+        berisikan atribut yang menjelaskan kondisi kualitas udara, seperti suhu dan tekanan udara,
+        pada suatu waktu di suatu tempat tertentu. Pada setiap baris pada dataset, terdapat kolom
+        PM2.5 yang menyatakan konsentrasi partikel PM2.5 yang ada di udara dalam satuan 
+        (ug/\SI{}{\metre\cubed}). Kami akan mencoba membuat model \textit{machine learning} yang 
+        dapat mempelajari pola kualitas udara agar bisa digunakan untuk memprediksi kadar PM2.5 
+        di udara. Metode \textit{data mining} yang digunakan adalah \textit{Regression} karena 
+        nilai kadar PM2.5 yang menjadi target bersifat kontinu (ug/\SI{}{\metre\cubed}). Oleh
+        karena itu, kami akan menerapkan metode dan langkah-langkah yang biasa digunakan untuk
+        membangun model \textit{Regression}.
+
+        \section{Hasil Explorasi Data}
         
-        PM2.5 merujuk pada "atmospheric particulate matter" yang memiliki diameter < 2.5 micrometer.
-        Karena ukurannya yang kecil partikel ini dapat masuk jauh ke dalam sistem pernafasan, dan
-        peredaran darah yang dapat menyebabkan serangan jantung, penyakit pernafasan, hingga kematian.
-        Partikel partikel tersebut muncul secara alami dari hal hal seperti gunung berapi dan kebakaran
-        hutan. Namun aktivitas manusia seperti pembakaran bahan bakar fosil dan proses industri lainnya
-        juga dapat meproduksi partikel partikel tersebut.
+        Hasil Explorasi
 
-        Diberikan dataset berisikan status keadaan udara seperti suhu dan tekanan udara
-        pada suatu waktu di suatu tempat. Pada setiap row pada dataset tersebut terdapat kolom
-        "PM2.5" yang menyatakan konsentrasi partikel PM2.5 yang ada di udara dalam satuan (ug/m3).
-        Dari dataset ini kami akan mencoba membuat model machine learning yang dapat mempelajari pola
-        kualitas udara agar bisa digunakan untuk memprediksi kadar PM2.5 di udara. Hal ini dapat
-        membantu mengetahui tempat dan waktu krusial yang memiliki tingkat PM2.5 tinggi agar bisa
-        dilakukan usaha pencegahan agar udara pada tempat dan waktu tersebut tidak dihirup oleh masyarakat.
+        \section{Desain Cara Kerja}
 
-        Karena nilai kadar PM2.5 bersifat kontinu (ug/m3) maka kami menyimpulkan bahwa permasalahan ini
-        dapat dimodelkan menggunakan regresi. Kami akan melakukan training terhadap dataset untuk menentukan
-        bobot pada setiap kolom beserta nilai bias nya. Bobot yang telah didapatkan akan digunakan untuk
-        memprediksi kada PM2.5 berdasarkan kualitas udaranya.
+        Desain Cara Kerja
+
+        1 Data Cleansing Process
+        Data cleansing is the first and a very crucial step in the overall data preparation
+        process and is the process of analysing, identifying and correcting messy, raw data.
+        When analysing organisational data to make strategic decisions you must start with
+        a thorough data cleansing process.
+
+        \begin{enumerate}[label=\alph*.]
+            \item We need to remove unused columns such as
+            \item We need to remove unused columns such as  
+        \end{enumerate}
+        a. We need to remove unused columns such as
+        b. Removing the duplicacy in the rows
+        c. Delete values have not been recorded or some information is missing
+        d. Changing release date column into Date format
+        e. 
+
+        2 Identifying relationships between variables / features
+        The main goal here is to identify and create relationships which can help you to build a hypothesis. 
+        We’ll have to define questions which can help us build some relationships to look at.
         
         \section{Metode yang Digunakan}
 
         Metode yang digunakan
 
-        \section{Desain Cara Kerja}
-
-        Desain Cara Kerja
-        
-        \section{Hasil Explorasi Data}
-        
-        Hasil Explorasi
-        
-    	\section{Timeline:}
-        
-        \noindent You can create bullets by doing:
-        
-        \begin{itemize}
-            \item(2/25)have a basic idea and outline for my paper
-            \item (3/1) have my capstone proposal made and submitted, and begin researching
-            \item(4/19) have my paper finished submitted for final review
-            \item(5/1) proof read and look over all my material and prepare for my presentation
-        \end{itemize}
-        
-    	\section{Possible Issues:}
-        Possible problems I foresee with this capstone is my lack of hardware compared to that used in the original content. beyond that technical issues with suricata and snort could lead to issues in the long run.
-
         \section{Referensi}
 
         Referensi
+        https://towardsdatascience.com/hitchhikers-guide-to-exploratory-data-analysis-6e8d896d3f7e
     \end{normalsize}
   
 \end{document}
