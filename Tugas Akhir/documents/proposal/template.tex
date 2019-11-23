@@ -9,15 +9,15 @@
     
 		\LARGE{\textbf{Proposal Tugas Akhir}} \\
         \vspace{1em}
-        \Large{Complete or Obsolete: A re-evaluation of research} \\
+        \Large{\textit{PM for PM2.5}: Analisis pada Dataset \textit{Air Quality}} \\
         \vspace{1em}
-        \normalsize\textbf{Joseph Eppich} \\
-        \normalsize{Eppichj@sunypoly.edu} \\
+        \normalsize\textbf{Andrew Savero Ongko, Muhammad Fakhrillah Abdul Azis,} \\
+        \normalsize\textbf{Muhammad Yudistira Hanifmuti} \\
+        \normalsize{\{andrew.savero, muhammad.fakhrillah, } \\
+        \normalsize{muhammad.yudistira\}@ui.ac.id} \\
         \vspace{1em}
-        \normalsize{Advisor: Joshua White} \\
-        \vspace{1em}
-        \normalsize{State University of New York Polytechnic Institute, Utica NY} \\
-        \normalsize{Bachelors of Science in Network and Computer Security}
+        \normalsize{Universitas Indonesia, Depok} \\
+        \normalsize{Fakultas Ilmu Komputer}
      
 	\end{center}
     \begin{normalsize}
@@ -37,7 +37,25 @@
         
         \section{Identifikasi Masalah}
         
-        Identifikasi masalah.
+        PM2.5 merujuk pada "atmospheric particulate matter" yang memiliki diameter < 2.5 micrometer.
+        Karena ukurannya yang kecil partikel ini dapat masuk jauh ke dalam sistem pernafasan, dan
+        peredaran darah yang dapat menyebabkan serangan jantung, penyakit pernafasan, hingga kematian.
+        Partikel partikel tersebut muncul secara alami dari hal hal seperti gunung berapi dan kebakaran
+        hutan. Namun aktivitas manusia seperti pembakaran bahan bakar fosil dan proses industri lainnya
+        juga dapat meproduksi partikel partikel tersebut.
+
+        Diberikan dataset berisikan status keadaan udara seperti suhu dan tekanan udara
+        pada suatu waktu di suatu tempat. Pada setiap row pada dataset tersebut terdapat kolom
+        "PM2.5" yang menyatakan konsentrasi partikel PM2.5 yang ada di udara dalam satuan (ug/m3).
+        Dari dataset ini kami akan mencoba membuat model machine learning yang dapat mempelajari pola
+        kualitas udara agar bisa digunakan untuk memprediksi kadar PM2.5 di udara. Hal ini dapat
+        membantu mengetahui tempat dan waktu krusial yang memiliki tingkat PM2.5 tinggi agar bisa
+        dilakukan usaha pencegahan agar udara pada tempat dan waktu tersebut tidak dihirup oleh masyarakat.
+
+        Karena nilai kadar PM2.5 bersifat kontinu (ug/m3) maka kami menyimpulkan bahwa permasalahan ini
+        dapat dimodelkan menggunakan regresi. Kami akan melakukan training terhadap dataset untuk menentukan
+        bobot pada setiap kolom beserta nilai bias nya. Bobot yang telah didapatkan akan digunakan untuk
+        memprediksi kada PM2.5 berdasarkan kualitas udaranya.
         
         \section{Metode yang Digunakan}
 
@@ -46,8 +64,8 @@
         \section{Desain Cara Kerja}
 
         Desain Cara Kerja
-
-	   	\section{Hasil Explorasi Data}
+        
+        \section{Hasil Explorasi Data}
         
         Hasil Explorasi
         
