@@ -1,5 +1,6 @@
 # Project related file
 *.pdf
+*.xlsx
 *.csv
 *.data
 *.names
